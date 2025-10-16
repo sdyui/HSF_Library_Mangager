@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Library Manager</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+</head>
+<body>
+<main class="container">
+    <h1>Library Manager</h1>
+    <p><a href="/search">Tra cứu</a></p>
+
+    <section>
+        <h3>Người dùng</h3>
+        <table>
+            <thead><tr><th>Tên</th><th>Email</th><th>Balance</th><th>Tier</th><th>Ban</th><th>Nạp tiền</th><th>Nâng cấp</th></tr></thead>
+            <tbody>
+            <tr th:each="u : ${users}">
+                <td th:text="${u.fullName}"></td>
+                <td th:text="${u.email}"></td>
+                <td th:text="${u.balanceVnd}"></td>
+                <td th:text="${u.membershipTier}"></td>
+                <td th:text="${u.banned}"></td>
+                <td>
+                    <form method="post" th:action="@{/action/topup}">
+                        <input type="hidden" name="userId" th:value="${u.id}"/>
+                        <input name="amount" type="number" min="1000" step="1000"/>
+                        <button type="submit">Nạp</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post" th:action="@{/action/upgrade}">
+                        <input type="hidden" name="userId" th:value="${u.id}"/>
+                        <select name="tier">
+                            <option value="ORDINARY">ORDINARY</option>
+                            <option value="ADVANCE">ADVANCE</option>
+                            <option value="PREMIUM">PREMIUM</option>
+                        </select>
+                        <button type="submit">Upgrade</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h3>Sách</h3>
+        <table>
+            <thead><tr><th>Tên</th><th>Mượn</th></tr></thead>
+            <tbody>
+            <tr th:each="b : ${books}">
+                <td th:text="${b.title}"></td>
+                <td>
+                    <form method="post" th:action="@{/action/borrow}">
+                        <input name="userId" type="number" placeholder="User ID" required />
+                        <input type="hidden" name="bookId" th:value="${b.id}"/>
+                        <input name="dueDate" type="date" required />
+                        <button type="submit">Mượn</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <p th:if="${errorMessage}" style="color:red" th:text="${errorMessage}"></p>
+    <p><a href="/h2" target="_blank">H2 Console</a></p>
+</main>
+</body>
+</html>
+
+

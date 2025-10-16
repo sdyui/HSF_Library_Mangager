@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Tra cứu</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+</head>
+<body>
+<main class="container">
+    <h1>Tra cứu</h1>
+    <form method="get" action="/search">
+        <input name="q" th:value="${q}" placeholder="Từ khóa"/>
+        <button type="submit">Tìm</button>
+    </form>
+
+    <h3>Tác giả</h3>
+    <ul>
+        <li th:each="a : ${authors}" th:text="${a.name}"></li>
+    </ul>
+
+    <h3>Sách</h3>
+    <ul>
+        <li th:each="b : ${books}" th:text="${b.title}"></li>
+    </ul>
+
+    <h3>Loans chưa trả</h3>
+    <ul>
+        <li th:each="l : ${openLoans}">
+            <span th:text="${l.user.fullName}"></span> - <span th:text="${l.book.title}"></span> - due <span th:text="${l.dueDate}"></span>
+        </li>
+    </ul>
+
+    <p><a href="/">Trang chủ</a></p>
+</main>
+</body>
+</html>
+
+
