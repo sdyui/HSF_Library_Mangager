@@ -1,5 +1,5 @@
 
-
+package com.example.hsf_library_manager.Entity;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -25,5 +25,29 @@ public class Library {
         this.id = id;
     }
 
-    // getters/setters
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Manager> getManagers() {
+        return managers;
+    }
+
+    public void setManagers(List<Manager> managers) {
+        this.managers = managers;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
+
 }

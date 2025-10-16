@@ -1,5 +1,5 @@
 
-
+package com.example.hsf_library_manager.Entity;
 import jakarta.persistence.*;
 
 @Entity
@@ -23,5 +23,27 @@ public class Manager {
         this.id = id;
     }
 
-    // getters/setters
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Library getLibrary() {
+        return library;
+    }
+
+    public void setLibrary(Library library) {
+        this.library = library;
+    }
 }

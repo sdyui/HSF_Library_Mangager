@@ -1,5 +1,5 @@
 
-
+package com.example.hsf_library_manager.Entity;
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,5 +22,29 @@ public class Author {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getBiography() {
+        return biography;
+    }
+
+    public void setBiography(String biography) {
+        this.biography = biography;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 }

@@ -1,3 +1,4 @@
+package com.example.hsf_library_manager.Entity;
 public enum MembershipType {
     ORDINARY(0, 5),
     ADVANCE(20000, 10),
@@ -13,4 +14,5 @@ public enum MembershipType {
 
     public double getFee() { return fee; }
     public int getLimit() { return limit; }
+
 }

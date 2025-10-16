@@ -1,0 +1,40 @@
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_2.xsd"
+             version="3.2">
+
+
+
+    <persistence-unit name="libraryPU" transaction-type="RESOURCE_LOCAL">
+        <!-- Provider có thể để trống; ghi rõ cho minh bạch -->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!-- (Tùy chọn) Khai báo các entity tường minh để IDE dễ index;
+             Nếu để trống, Hibernate vẫn quét classpath -->
+        <!--
+        <class>com.library.entity.Library</class>
+        <class>com.library.entity.Manager</class>
+        <class>com.library.entity.Author</class>
+        <class>com.library.entity.Book</class>
+        <class>com.library.entity.User</class>
+        <class>com.library.entity.BorrowRecord</class>
+        -->
+
+        <properties>
+            <!-- Kết nối SQL Server -->
+            <property name="jakarta.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;databaseName=LibraryDB;encrypt=false"/>
+            <property name="jakarta.persistence.jdbc.user" value="sa"/>
+            <property name="jakarta.persistence.jdbc.password" value="123"/>
+
+            <!-- Hibernate -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+
+            <!-- (Khuyến nghị) Tắt generation của sequence nếu gặp lỗi IDENTITY -->
+            <!-- <property name="hibernate.id.new_generator_mappings" value="true"/> -->
+        </properties>
+    </persistence-unit>
+</persistence>

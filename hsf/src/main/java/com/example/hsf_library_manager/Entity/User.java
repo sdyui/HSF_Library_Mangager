@@ -1,5 +1,5 @@
-
-
+package com.example.hsf_library_manager.Entity;
+import package.
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +35,46 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public boolean isBanned() {
+        return banned;
+    }
+
+    public void setBanned(boolean banned) {
+        this.banned = banned;
+    }
+
+    public MembershipType getMembership() {
+        return membership;
+    }
+
+    public void setMembership(MembershipType membership) {
+        this.membership = membership;
+    }
+
+    public List<BorrowRecord> getBorrowedBooks() {
+        return borrowedBooks;
+    }
+
+    public void setBorrowedBooks(List<BorrowRecord> borrowedBooks) {
+        this.borrowedBooks = borrowedBooks;
     }
 
     // getters/setters
